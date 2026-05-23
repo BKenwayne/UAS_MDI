@@ -220,12 +220,11 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Icon Capsule
           Container(
-            padding: const EdgeInsets.all(6),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: iconBgColor,
               shape: BoxShape.circle,
@@ -233,33 +232,37 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
             child: Icon(
               icon,
               color: iconColor,
-              size: 16,
+              size: 18,
             ),
           ),
-          const SizedBox(height: 10),
-          // Title
-          Text(
-            title,
-            style: TextStyle(
-              color: textColor.withValues(alpha: 0.7),
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Lexend',
-              letterSpacing: 0.5,
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: textColor.withValues(alpha: 0.7),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Lexend',
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  value,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Lexend',
+                    height: 1.3,
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 2),
-          // Value
-          Text(
-            value,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Lexend',
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
@@ -487,18 +490,11 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
             ),
             const SizedBox(height: 28),
 
-            // 2. PREMIUM GRID OF 4 QUICK-INFO CAPSULE CARDS
+            // 2. QUICK-INFO CARDS (vertikal, teks tidak terpotong)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: GridView.count(
-                crossAxisCount: 4,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.72,
+              child: Column(
                 children: [
-                  // Info 1: Habitat
                   _buildQuickInfoCard(
                     title: 'HABITAT',
                     value: _getHabitatType(animal.habitat),
@@ -508,7 +504,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
                     cardBgColor: const Color(0xFFF1F8E9),
                     textColor: const Color(0xFF33691E),
                   ),
-                  // Info 2: Makanan
+                  const SizedBox(height: 10),
                   _buildQuickInfoCard(
                     title: 'MAKANAN',
                     value: _getDietType(animal.name),
@@ -518,7 +514,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
                     cardBgColor: const Color(0xFFFFFDE7),
                     textColor: const Color(0xFFE65100),
                   ),
-                  // Info 3: Wilayah
+                  const SizedBox(height: 10),
                   _buildQuickInfoCard(
                     title: 'ASAL',
                     value: _getOriginAbbreviation(animal.name),
@@ -528,7 +524,7 @@ class _AnimalDetailPageState extends State<AnimalDetailPage> {
                     cardBgColor: const Color(0xFFE3F2FD),
                     textColor: const Color(0xFF0D47A1),
                   ),
-                  // Info 4: Kelas
+                  const SizedBox(height: 10),
                   _buildQuickInfoCard(
                     title: 'KELAS',
                     value: animal.category,
