@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'data/local_storage_service.dart';
-import 'pages/login_page.dart';
-import 'pages/main_navigation_page.dart';
+import 'pages/splash_screen_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +16,6 @@ class NusaFaunaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final storage = LocalStorageService.instance;
-    final isLoggedIn = storage.isLoggedIn();
-
     return MaterialApp(
       title: 'NusaFauna',
       debugShowCheckedModeBanner: false,
@@ -43,7 +39,7 @@ class NusaFaunaApp extends StatelessWidget {
           scrolledUnderElevation: 0,
         ),
       ),
-      home: isLoggedIn ? const MainNavigationPage() : const LoginPage(),
+      home: const SplashScreenPage(),
     );
   }
 }
