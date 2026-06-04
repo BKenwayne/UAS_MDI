@@ -169,22 +169,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 color: brandGreen,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 24),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: brandGreen,
-                    width: 1.5,
-                  ),
-                ),
-                child: const CircleAvatar(
-                  radius: 16,
-                  backgroundImage: AssetImage('assets/images/logo.png'),
-                ),
-              ),
-            ),
           ],
         ),
       ),
